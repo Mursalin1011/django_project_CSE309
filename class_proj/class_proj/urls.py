@@ -16,7 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from class_app import views
+from django.conf.urls import include
+from quote import urls
+# from quote.views import QuoteList
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('quote', include('quote.urls')),
+    # path('', include('class_app.urls')),
     path('', views.index, {'pagename': ''}, name='home'),
     path('<str:pagename>', views.index, name='index'),
+
 ]
